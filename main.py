@@ -1,13 +1,16 @@
-import yfinance as yf
-import pandas as pd
+import os
+import torch
 
+from observer.get_data import get_obs_from_json
+from rnn.model import Net
+from train import TIME_PERIOD, train
 
-msft = yf.Ticker("SOL1-USD")
-data = msft.history(period="max")
+if __name__ == "__main__":
+    # Load data
+    obs_file = os.path.join("observer", "obs.json")
+    data = get_obs_from_json(obs_file)
 
-start_date = data.index.values[0]
-last_date = data.index.values[-1]
+    obs_size = torch.Size([data.size(0), TIME_PERIOD])
+    model = Net(obs_size=obs_size)
 
-print(
-    data.head()
-)
+    train(model, data)

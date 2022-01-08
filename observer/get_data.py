@@ -79,7 +79,7 @@ if __name__ == "__main__":
     obs = build_obs(start_date_global, last_date_global, observed_entries_list)
 
     # Save it
-    json_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "obs")
+    json_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "obs.json")
     save_obs_json(obs, json_path)
 
 

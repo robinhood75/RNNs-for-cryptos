@@ -2,9 +2,8 @@ import torch.nn as nn
 
 
 class Net(nn.Module):
-    def __init__(self, obs_size, nb_currencies, hidden_size=64):
+    def __init__(self, obs_size, hidden_size=64):
         super().__init__()
-        self.nb_currencies = nb_currencies
         self.obs_size = obs_size
 
         self.LSTM = nn.LSTM(input_size=obs_size, hidden_size=hidden_size)
