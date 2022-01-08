@@ -58,8 +58,9 @@ def build_obs(start_date_global, last_date_global, observed_entries_list, ticker
     return obs
 
 
-def save_obs_json(_obs, _json_path):
-    obs_dict = {"obs": _obs}
+def save_obs_json(obs_tensor, _json_path):
+    obs = obs_tensor.tolist()
+    obs_dict = {"obs": obs}
     with open(_json_path, "w") as f:
         json.dump(obs_dict, f, indent=4)
 
@@ -74,7 +75,7 @@ if __name__ == "__main__":
     msft = yf.Ticker("ETH-USD")
     data = msft.history(period="max")
     start_date_global, last_date_global = data.index.values[0], data.index.values[-1]
-    observed_entries_list = ["Close", "High"]
+    observed_entries_list = ["Close"]
     obs = build_obs(start_date_global, last_date_global, observed_entries_list)
 
     # Save it
