@@ -5,7 +5,7 @@ import yfinance as yf
 import torch
 import numpy as np
 
-from tickers import tickers25_USD
+from observer.tickers import tickers25_USD
 
 
 class CryptoHistory:

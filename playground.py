@@ -8,6 +8,4 @@ data = msft.history(period="max")
 start_date = data.index.values[0]
 last_date = data.index.values[-1]
 
-print(
-    data.head()
-)
+print(data.head())
