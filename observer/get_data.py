@@ -66,7 +66,8 @@ def save_obs_json(obs_tensor, _json_path):
 
 
 def get_obs_from_json(json_dump):
-    obs_dict = json.loads(json_dump)
+    with open(json_dump) as f:
+        obs_dict = json.load(f)
     return torch.Tensor(obs_dict["obs"])
 
 
