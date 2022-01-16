@@ -4,7 +4,7 @@ import torch.nn as nn
 TIME_PERIOD = 512
 
 
-def train(model, train_set, train_targets, batch_size=16, nb_epochs=20):
+def train(model, train_set, train_targets, batch_size=16, nb_epochs=40):
     loss_fn = nn.MSELoss()
     optimizer = torch.optim.Adam(model.parameters())
 

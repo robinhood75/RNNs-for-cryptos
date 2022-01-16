@@ -1,11 +1,10 @@
-import pandas as pd
 import json
 import os
 import yfinance as yf
 import torch
 import numpy as np
 
-from observer.tickers import tickers25_USD
+from observer.tickers import tickers5_USD
 
 
 class CryptoHistory:
@@ -34,7 +33,7 @@ def compute_time_difference(datetime: np.datetime64):
     return days / np.timedelta64(1, 'D')
 
 
-def build_obs(start_date_global, last_date_global, observed_entries_list, tickers_list=tickers25_USD):
+def build_obs(start_date_global, last_date_global, observed_entries_list, tickers_list=tickers5_USD):
     # Get currencies with start date posterior to start_date_global
     filtered = []
     obs_dim = int(compute_time_difference(last_date_global - start_date_global))
