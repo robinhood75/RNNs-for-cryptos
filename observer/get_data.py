@@ -52,7 +52,8 @@ def build_obs(start_date_global, last_date_global, observed_entries_list, ticker
 
     print(f"List of observed cryptocurrencies: \n"
           f"{filtered} \n"
-          f"Observation shape: {obs.size()}")
+          f"Observation shape: {obs.size()} \n"
+          f"----------------------------------------------------------------------")
 
     return obs
 
@@ -70,7 +71,7 @@ def get_obs_from_json(json_dump):
     return torch.Tensor(obs_dict["obs"])
 
 
-if __name__ == "__main__":
+def save_data(file_name="obs.json"):
     # Build observation
     msft = yf.Ticker("ETH-USD")
     data = msft.history(period="max")
@@ -79,7 +80,7 @@ if __name__ == "__main__":
     obs = build_obs(start_date_global, last_date_global, observed_entries_list)
 
     # Save it
-    json_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "obs.json")
+    json_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), file_name)
     save_obs_json(obs, json_path)
 
 
